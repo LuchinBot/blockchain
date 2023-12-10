@@ -65,25 +65,30 @@ async function crearRegistro() {
 </script>
 
 <template>
-  <main>
-    <h2 class="h2">Crear Registro</h2>
+<div style="background-color: #1B1B1B; padding: 10px">
+      <div class="container py-4">
+        <h1 style="color: white; font-weight: 600; font-size: 18px">Creación de un Registro</h1>
+        <hr style="color: #d2d2d2">
+      </div>
+  </div>
+  <main class="container my-3">
     <form @submit.prevent="crearRegistro">
       <div class="form-group mb-3">
-        <label class="mb-1" for="nombreinput">Nombre:</label>
-        <input v-model="nombre" type="text" class="form-control" id="nombreinput" placeholder="Ingrese el nombre"
+        <label class="mb-1 text-secondary mb-2" for="nombreinput">Nombre del contrato:</label>
+        <input v-model="nombre" type="text" class="form-control rounded-0" id="nombreinput" placeholder="Ingrese el nombre del contrato"
           required />
       </div>
       <div class="form-group mb-3">
-        <label class="mb-1" for="inputcategoria">Categoria:</label>
-        <input v-model="categoria" type="text" class="form-control" id="inputcategoria" placeholder="Ingrese la categoria"
+        <label class="mb-1 text-secondary mb-2" for="inputcategoria">Categoría del contrato:</label>
+        <input v-model="categoria" type="text" class="form-control rounded-0" id="inputcategoria" placeholder="Ingrese la categoria del contrato"
           required />
       </div>
       <div class="form-group mb-3">
-        <label class="mb-1" for="inputarchivo">Archivo:</label>
-        <input type="file" class="form-control" id="inputarchivo" placeholder="Ingrese el nombre del archivo"
+        <label class="mb-1 text-secondary mb-2" for="inputarchivo">Archivo del contrato:</label>
+        <input type="file" class="form-control rounded-0" id="inputarchivo" placeholder="Ingrese el archivo del archivo del contrato"
           @change="handleFileUpload" required />
       </div>
-      <button type="submit" class="btn btn-primary">Guardar Registro</button>
+      <button type="submit" class="btn btn-save rounded-0 px-5 mt-3">Guardar Registro</button>
     </form>
     <p class="text" v-if="success">Registro creado exitosamente.</p>
     <p class="text" v-if="errorMensaje">{{ errorMensaje }}</p>
@@ -97,5 +102,29 @@ async function crearRegistro() {
 
 .text {
   margin: 0.5rem 0;
+}
+.form-control{
+  color: white !important;
+    background-color: #1B1B1B !important;
+    border: none !important;
+    border-bottom: 1px solid #d2d2d2 !important;
+}
+.form-control:focus{
+  border-color: none !important;
+  box-shadow: none !important;
+}
+.form-control::placeholder{
+  color: #33454C !important;
+}
+.btn-save{
+  transition: 0.4s;
+  font-weight: 600;
+  background-color: #1B1B1B ; 
+  border: 1px solid #FF9000;
+  color: white
+}
+.btn-save:hover{
+  color: #f1f1f1;
+  background-color: #FF9000;
 }
 </style>

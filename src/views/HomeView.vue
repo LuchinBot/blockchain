@@ -45,69 +45,66 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
-    <h2 class="h2">Listado de Registros</h2>
-    <table class="table table-hover table-bordered">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Categoria</th>
-          <th>Archivo</th>
-        </tr>
-      </thead>
-      <tbody v-if="registros.length > 0">
-        <tr v-for="(registro, index) in registros" :key="index">
-          <td>{{ registro.id }}</td>
-          <td>{{ registro.nombre }}</td>
-          <td>{{ registro.categoria }}</td>
-          <td>
-            <button class="btn btn-primary" @click="descargarArchivo(registro.urlArchivo)">
-              Descargar archivo
-            </button>
-          </td>
-        </tr>
-      </tbody>
-      <tbody v-else-if="loading">
-        <tr>
-          <td class="text-center" colspan="4">Cargando...</td>
-        </tr>
-      </tbody>
-      <tbody v-else>
-        <tr>
-          <td class="text-center" colspan="4">No hay registros.</td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
-</template>
-
-<style scoped>
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.thead {
-  background-color: #000;
-}
-
-.h2 {
-  margin: 1rem 0;
-}
-</style>
+  <div style="background-color: #1B1B1B; padding: 10px">
+      <div class="container py-4">
+        <h1 style="color: white; font-weight: 600; font-size: 18px">Listado de Registros</h1>
+        <hr style="color: #d2d2d2">
+      </div>
+  </div>
+  <main class="container mt-3">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr class="table-head">
+            <th>Nro.</th>
+            <th>Nombre del contrato</th>
+            <th>Categoría del contrato</th>
+            <th>Archivo de contrato</th>
+          </tr>
+        </thead>
+        <tbody v-if="registros.length > 0">
+          <tr v-for="(registro, index) in registros" :key="index">
+            <td>{{ registro.id }}</td>
+            <td>{{ registro.nombre }}</td>
+            <td>{{ registro.categoria }}</td>
+            <td>
+              <button class="btn btn-primary" @click="descargarArchivo(registro.urlArchivo)">
+                Descargar archivo
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody v-else-if="loading">
+          <tr>
+            <td class="text-center" colspan="4">Cargando registros...</td>
+          </tr>
+        </tbody>
+        <tbody v-else>
+          <tr>
+            <td class="text-center" colspan="4">No hay registros.</td>
+          </tr>
+        </tbody>
+      </table>
+  </main >
+</template >
+  <style scoped>
+    table{
+         font-size: 12px;
+    }
+    table tbody tr td{
+      text-align: center;
+      background-color: #d2d2d2;
+    }
+    table thead{
+      border: none !important;
+    }
+    .table-head th{
+      text-align: center;
+      border: none !important;
+      background-color: #000;
+      font-weight: 600;
+      color: white;
+    }
+    *{
+      user-select: none !important;
+    }
+  </style>
